@@ -14,8 +14,9 @@ import javax.ws.rs.core.MediaType;
 public class HelloResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
+    @Consumes({"text/xml", "text/plain", "text/html", MediaType.TEXT_HTML})
     public String sayHello() {
-        return "Hello World PLAIN text";
+        return "<html><title>Hello World HTML</title><body><h1>Hello World HTML JRebel Rules!</body></h1></html>";
     }
     
     @GET
@@ -31,7 +32,7 @@ public class HelloResource {
     }
     
     @POST
-    @Consumes({"text/xml", "text/plain", MediaType.TEXT_HTML})
+    @Consumes({"text/xml", "text/plain", "text/html", MediaType.TEXT_HTML})
     @Produces(MediaType.TEXT_PLAIN)
     public String sayPostHello() {
         return "Hello World Post!";
